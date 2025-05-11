@@ -23,12 +23,14 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 1rem;
+            width: 100%;
         }
         
         header {
@@ -37,6 +39,24 @@
             padding: 2rem 0;
             text-align: center;
             margin-bottom: 2rem;
+        }
+        
+        .logo-container {
+            margin-bottom: 1rem;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: bold;
         }
         
         header h1 {
@@ -52,12 +72,18 @@
         nav {
             background-color: var(--dark);
             margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .menu-toggle {
+            display: none;
         }
         
         nav ul {
             display: flex;
             list-style: none;
             justify-content: center;
+            flex-wrap: wrap;
         }
         
         nav li {
@@ -69,6 +95,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: opacity 0.3s;
+            white-space: nowrap;
         }
         
         nav a:hover {
@@ -94,9 +121,24 @@
             margin-bottom: 1.5rem;
         }
         
+        .highlight-info {
+            background-color: #e0f2fe;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-info p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight-info p:last-child {
+            margin-bottom: 0;
+        }
+        
         .leadership {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1.5rem;
         }
         
@@ -122,12 +164,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            .teams {
-                grid-template-columns: 1fr;
-            }
         }
         
         .team {
@@ -179,6 +215,25 @@
             background-color: #f2f2f2;
         }
         
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin-top: 1rem;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
         footer {
             background-color: var(--dark);
             color: white;
@@ -193,19 +248,80 @@
             padding: 1rem;
             margin-bottom: 1.5rem;
         }
+        
+        @media (max-width: 768px) {
+            .teams {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
+            
+            nav ul.show {
+                max-height: 500px;
+            }
+            
+            nav li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .leadership {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .schedule {
+                font-size: 0.9rem;
+            }
+            
+            .schedule th, .schedule td {
+                padding: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .leadership {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
+            <div class="logo-container">
+                <div class="logo">SC</div>
+            </div>
             <h1>SPORTS CLUB</h1>
             <p>Building community through competition</p>
         </div>
     </header>
     
     <nav>
-        <ul>
+        <button class="menu-toggle" id="menuToggle">Menu ☰</button>
+        <ul id="navMenu">
             <li><a href="#about">About</a></li>
+            <li><a href="#location">Location & Time</a></li>
             <li><a href="#leadership">Leadership</a></li>
             <li><a href="#members">Members</a></li>
             <li><a href="#teams">Teams</a></li>
@@ -219,6 +335,19 @@
             <div class="card">
                 <p>Welcome to our sports club! We are dedicated to fostering a competitive yet friendly environment where members can engage in sports activities, build lasting friendships, and develop their skills.</p>
                 <p>Our club organizes regular matches, tournaments, and social events for all members.</p>
+            </div>
+        </section>
+        
+        <section id="location">
+            <h2>Location & Time</h2>
+            <div class="card">
+                <div class="highlight-info">
+                    <p><strong>📍 Location:</strong> Quarry Park in Headington</p>
+                    <p><strong>⏰ Time:</strong> Every Sunday at 4pm</p>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2469.6802124472734!2d-1.2162872233810283!3d51.75711469599135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c16ff4eda81d%3A0x663c6be0ddf36516!2sQuarry%20Park%2C%20Oxford%20OX3%208LH!5e0!3m2!1sen!2suk!4v1715412051020!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </section>
         
@@ -320,24 +449,20 @@
                         <tr>
                             <th>Date</th>
                             <th>Event</th>
-                            <th>Location</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>May 18, 2025</td>
                             <td>Team A vs Team B</td>
-                            <td>Main Court</td>
                         </tr>
                         <tr>
                             <td>May 25, 2025</td>
                             <td>Training Session</td>
-                            <td>Practice Area</td>
                         </tr>
                         <tr>
                             <td>June 1, 2025</td>
                             <td>Club Meeting</td>
-                            <td>Conference Room</td>
                         </tr>
                     </tbody>
                 </table>
@@ -348,20 +473,40 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Sports Club. All rights reserved.</p>
+            <p>Every Sunday at 4pm - Quarry Park, Headington</p>
             <p>Contact: info@sportsclub.example.com</p>
         </div>
     </footer>
 
     <script>
-        // JavaScript for future enhancements
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('show');
+                });
+            });
+            
             // Get the club name element
             const clubName = document.querySelector('header h1');
+            const logoText = document.querySelector('.logo');
             
             // Function to update club name if needed
             function updateClubName(name) {
                 if (name && name.trim() !== '') {
                     clubName.textContent = name.toUpperCase();
+                    // Update logo text with initials
+                    const initials = name.split(' ').map(word => word[0]).join('');
+                    logoText.textContent = initials;
                 }
             }
             
