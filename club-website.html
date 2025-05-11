@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Club</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #db2777;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            margin-bottom: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        nav li {
+            padding: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            color: var(--dark);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .leadership {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .leader-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .leader-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+        
+        .teams {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .teams {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .team {
+            background: linear-gradient(45deg, var(--primary), #3b82f6);
+            color: white;
+        }
+        
+        .team:nth-child(2) {
+            background: linear-gradient(45deg, var(--secondary), #ec4899);
+        }
+        
+        .team h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .member-list {
+            list-style: none;
+        }
+        
+        .member-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .member-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .schedule {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .schedule th, .schedule td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .schedule th {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .schedule tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .notice {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SPORTS CLUB</h1>
+            <p>Building community through competition</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="#members">Members</a></li>
+            <li><a href="#teams">Teams</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="about">
+            <h2>About Our Club</h2>
+            <div class="card">
+                <p>Welcome to our sports club! We are dedicated to fostering a competitive yet friendly environment where members can engage in sports activities, build lasting friendships, and develop their skills.</p>
+                <p>Our club organizes regular matches, tournaments, and social events for all members.</p>
+            </div>
+        </section>
+        
+        <section id="leadership">
+            <h2>Club Leadership</h2>
+            <div class="leadership">
+                <div class="card leader-card">
+                    <div class="leader-img">J</div>
+                    <h3>Jakaria</h3>
+                    <p>Director</p>
+                </div>
+                <div class="card leader-card">
+                    <div class="leader-img">T</div>
+                    <h3>Tahsin</h3>
+                    <p>Director</p>
+                </div>
+                <div class="card leader-card">
+                    <div class="leader-img">Y</div>
+                    <h3>Yousuf</h3>
+                    <p>General Secretary</p>
+                </div>
+                <div class="card leader-card">
+                    <div class="leader-img">A</div>
+                    <h3>Abdullah</h3>
+                    <p>Cashier</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="members">
+            <h2>All Members</h2>
+            <div class="card">
+                <ol>
+                    <li>Jakaria</li>
+                    <li>Tahsin</li>
+                    <li>Lukman</li>
+                    <li>Abdullah</li>
+                    <li>Yousuf</li>
+                    <li>Imran</li>
+                    <li>Iqbal</li>
+                    <li>Munna</li>
+                    <li>Al Amin</li>
+                    <li>Ridwan</li>
+                    <li>Farhan</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="teams">
+            <h2>Teams</h2>
+            <div class="notice">
+                <p>⚠️ Additional players will be assigned to teams on the day of play</p>
+            </div>
+            <div class="teams">
+                <div class="card team">
+                    <h3>TEAM A</h3>
+                    <ul class="member-list">
+                        <li>Jakaria</li>
+                        <li>Yousuf</li>
+                        <li>Lukman</li>
+                        <li>Munna</li>
+                        <li>Farhan</li>
+                        <li>Abdullah</li>
+                    </ul>
+                </div>
+                <div class="card team">
+                    <h3>TEAM B</h3>
+                    <ul class="member-list">
+                        <li>Tahsin</li>
+                        <li>Ridwan</li>
+                        <li>Al Amin</li>
+                        <li>Raju</li>
+                        <li>Iqbal</li>
+                        <li>Imran</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="matchups">
+            <h2>Player Matchups</h2>
+            <div class="card">
+                <ol>
+                    <li>Jakaria vs Tahsin</li>
+                    <li>Yousuf vs Ridwan</li>
+                    <li>Lukman vs Al Amin</li>
+                    <li>Munna vs Raju</li>
+                    <li>Iqbal vs Farhan</li>
+                    <li>Abdullah vs Imran</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="schedule">
+            <h2>Upcoming Schedule</h2>
+            <div class="card">
+                <table class="schedule">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>May 18, 2025</td>
+                            <td>Team A vs Team B</td>
+                            <td>Main Court</td>
+                        </tr>
+                        <tr>
+                            <td>May 25, 2025</td>
+                            <td>Training Session</td>
+                            <td>Practice Area</td>
+                        </tr>
+                        <tr>
+                            <td>June 1, 2025</td>
+                            <td>Club Meeting</td>
+                            <td>Conference Room</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sports Club. All rights reserved.</p>
+            <p>Contact: info@sportsclub.example.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for future enhancements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the club name element
+            const clubName = document.querySelector('header h1');
+            
+            // Function to update club name if needed
+            function updateClubName(name) {
+                if (name && name.trim() !== '') {
+                    clubName.textContent = name.toUpperCase();
+                }
+            }
+            
+            // Example: This could be connected to an API or database in the future
+            // updateClubName('SPORTS CHAMPIONS CLUB');
+        });
+    </script>
+</body>
+</html>
